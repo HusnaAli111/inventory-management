@@ -8,6 +8,13 @@ const methodOverride = require('method-override')
 const {MongoStore} = require("connect-mongo");
 const connectToDB = require('./db.js')
 
+//models import
+const Category = require('./models/Category')
+const Product = require('./models/Product')
+const User = require('./models/User')
+const StockMovement = require('./models/stockMovement')
+
+
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");

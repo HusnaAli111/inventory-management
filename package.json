@@ -10,16 +10,25 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "A web-based Inventory Management System that allows users to manage products, categories, and stock movements in one place.",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "connect-mongo": "^6.0.0",
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-session": "^1.18.2",
     "method-override": "^3.0.0",
-    "mongoose": "^9.1.2",
-    "morgan": "^1.10.1"
-  }
+    "mongoose": "^9.10.1",
+    "morgan": "^1.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HusnaAli111/inventory-management.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HusnaAli111/inventory-management/issues"
+  },
+  "homepage": "https://github.com/HusnaAli111/inventory-management#readme"
 }

@@ -45,7 +45,17 @@ router.get('/:id/edit', async (req, res) => {
 
 });
 
-
+router.put('/:id',async(req,res)=>{
+    const edit=await Product.findByIdAndUpdate(req.params.id,{
+        name:req.body.name,
+        description:req.body.description,
+        price:req.body.price,
+        quantity: req.body.quantity,
+        minStock: req.body.minStock
+    })
+    res.redirect('/products')
+})
+// redirect is taking it to the route not the page 
 
 
 module.exports = router;

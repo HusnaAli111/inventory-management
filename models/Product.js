@@ -22,7 +22,11 @@ const ProductSchema = new mongoose.Schema({
   category:{
     type:mongoose.Schema.Types.ObjectId,
         ref: 'Category'
+  },
+  picture:{
+    type:String
   }
+
 }, {timestamps: true});
 
 const Product = mongoose.model("Product", ProductSchema);

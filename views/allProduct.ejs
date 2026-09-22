@@ -12,12 +12,16 @@
 
 <% for(let product of products){%>
         <h2>name: <%= product.name %></h2>
-        <p>description: <%= product.description %></p>
+        <!-- <p>description: <%= product.description %></p> -->
         <p>price: <%= product.price %></p>
-        <p>quantity: <%= product.quantity %></p>
-        <p>minStock: <%= product.minStock %></p>
+        <!-- <p>quantity: <%= product.quantity %></p> -->
+        <!-- <p>minStock: <%= product.minStock %></p> -->
+
+    <a href="/products/<%= product._id %>">View Product</a>    
+
 
     <%}%>
+
 
 </body>
 </html>

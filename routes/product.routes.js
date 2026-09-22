@@ -29,6 +29,23 @@ router.get('/', async (req, res) => {
     res.render('allProduct.ejs', { products });
 });
 
+//view product id for one product
+
+router.get('/:id',async(req,res)=>{
+    const product = await Product.findById(req.params.id)
+    res.render('show.ejs',{product:product})
+})
+
+//edit the product inside the show page
+router.get('/:id/edit', async (req, res) => {
+
+    const product = await Product.findById(req.params.id);
+
+    res.render('edit.ejs', { product: product });
+
+});
+
+
 
 
 module.exports = router;

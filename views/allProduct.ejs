@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+
+<body>
+
+    <h1> Inventory Managamet System</h1>
+
+<% for(let product of products){%>
+        <h2>name: <%= product.name %></h2>
+        <p>description: <%= product.description %></p>
+        <p>price: <%= product.price %></p>
+        <p>quantity: <%= product.quantity %></p>
+        <p>minStock: <%= product.minStock %></p>
+
+    <%}%>
+
+</body>
+</html>

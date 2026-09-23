@@ -19,10 +19,6 @@ const StockSchema = new mongoose.Schema({
 
     quantity:{
         type: Number
-    },
-
-    reason:{ 
-        type:String
     }
 
 }, {timestamps: true});

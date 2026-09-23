@@ -36,6 +36,14 @@ router.put("/:id", isAdmin, async (req, res) => {
 
 })
 
+//delete category for admin
+router.delete("/:id", isAdmin, async (req, res) => {
+
+    await Category.findByIdAndDelete(req.params.id)
+    res.redirect("/categories")
+
+})
+
 
 
 

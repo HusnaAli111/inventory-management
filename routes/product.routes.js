@@ -57,5 +57,14 @@ router.put('/:id',async(req,res)=>{
 })
 // redirect is taking it to the route not the page 
 
+//delete route
+router.delete('/:id', async (req, res) => {
+
+    await Product.findByIdAndDelete(req.params.id);
+
+    res.redirect('/products');
+
+});
+
 
 module.exports = router;

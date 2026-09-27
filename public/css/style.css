@@ -170,3 +170,48 @@ td {
     padding: 12px;
     border-bottom: 1px solid #dddddd;
 }
+
+/* dashboard section */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.add-button {
+    background-color: #00a65a;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.add-button:hover {
+    background-color: #008d4c;
+}
+/* edit and view */
+.view-button {
+    background-color: #00a9d8;
+    color: white;
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.edit-button {
+    background-color: #f39c12;
+    color: white;
+    text-decoration: none;
+    padding: 7px 12px;
+    border-radius: 4px;
+}
+
+.view-button:hover {
+    background-color: #008bb5;
+}
+
+.edit-button:hover {
+    background-color: #d98200;
+}

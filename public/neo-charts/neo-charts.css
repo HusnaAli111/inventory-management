@@ -1,0 +1,335 @@
+/* Neo Charts */
+
+/* Generic */
+
+.p-neo-charts.is-transparent { box-shadow:none; }
+.is-transparent > .nc-chart { background-color:transparent; }
+.nc-chart { --nc-bg:#1a1a2e; --nc-text:rgba(255,255,255,.85); --nc-text-muted:rgba(255,255,255,.7); --nc-text-dim:rgba(255,255,255,.6); --nc-text-faint:rgba(255,255,255,.5); --nc-border:rgba(255,255,255,.08); --nc-border-strong:rgba(255,255,255,.15); --nc-tooltip-bg:rgba(15,15,30,.95); --nc-tooltip-text:rgba(255,255,255,.9); --nc-highlight-overlay:rgba(255,255,255,.15); --nc-bullet-band:rgba(255,255,255,.5); --nc-threshold:#ff6b6b; --nc-threshold-fill:rgba(255,107,107,.12); background-color:transparent; overflow:visible; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding:20px 24px; display:flex; flex-direction:column; gap:16px; }
+.nc-chart, .nc-chart * { box-sizing:border-box }
+.nc-chart .nc-title { width:100%; padding:0; flex-shrink:0; text-align:right; font-weight:600; font-size:16px; color:var(--nc-text) }
+.nc-chart .nc-subtitle { font-size:12px; font-weight:400; color:var(--nc-text-muted); margin-top:2px; }
+
+/* Light theme */
+.nc-chart.nc-light { --nc-bg:#ffffff; --nc-text:rgba(0,0,0,.85); --nc-text-muted:rgba(0,0,0,.65); --nc-text-dim:rgba(0,0,0,.58); --nc-text-faint:rgba(0,0,0,.55); --nc-border:rgba(0,0,0,.08); --nc-border-strong:rgba(0,0,0,.15); --nc-tooltip-bg:rgba(255,255,255,.95); --nc-tooltip-text:rgba(0,0,0,.85); --nc-highlight-overlay:rgba(0,0,0,.12); --nc-bullet-band:rgba(0,0,0,.45); --nc-threshold:#e03131; --nc-threshold-fill:rgba(224,49,49,.1); }
+
+.nc-chart-body { flex:1; min-height:0; display:flex; flex-direction:column; }
+.nc-empty { width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:400; color:var(--nc-text-faint); margin:0; }
+
+/* Visually hidden but exposed to assistive tech (screen-reader data table; auto-hidden legend). */
+.nc-sr-only, .nc-legend.nc-legend-hidden { position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); clip-path:inset(50%); white-space:nowrap; border:0; }
+
+/* Keyboard focus: a visible indicator on any focusable data element (no :focus styles existed). */
+.nc-chart :focus-visible { outline:2px solid var(--nc-text); outline-offset:2px; z-index:1001; }
+/* Mirror every :hover tooltip reveal for keyboard focus so focusing an item shows its tooltip. */
+.nc-item:focus-visible .nc-tooltip,
+.nc-dot:focus-visible .nc-tooltip,
+.nc-heatmap-cell:focus-visible .nc-tooltip,
+.nc-treemap-cell:focus-visible .nc-tooltip,
+.nc-bullet-row:focus-visible .nc-tooltip,
+.nc-funnel-wrap:focus-visible .nc-tooltip { display:block; }
+.nc-item:focus-visible, .nc-stack:focus-visible, .nc-dot:focus-visible { z-index:1001; }
+
+/* The opacity transition lives on the BASE rules (here and on dots/segments/cells below), not on
+   the .has-highlight :hover rules: a transition declared only in the hover state vanishes the
+   moment the pointer leaves, so the dim eased in but snapped back out. */
+.nc-item { background-color:#eb453b; cursor:pointer; transition:opacity .25s; }
+.nc-item:hover { z-index:1000; }
+.nc-item:hover .nc-tooltip { display:block; }
+.nc-stack, .nc-group { transition:opacity .25s; }
+.nc-stack:hover { z-index:1000; }
+.nc-item .nc-main .nc-label { font-size:12px; color:var(--nc-text-muted); text-align:center }
+.nc-item .nc-main .nc-value { font-size:12px; font-weight:600; color:var(--nc-text); }
+
+.nc-tooltip { display:none; position:absolute; bottom:100%; left:50%; transform:translateX(-50%); white-space:nowrap; padding:8px 12px; font-size:12px; background-color:var(--nc-tooltip-bg); border:1px solid var(--nc-border-strong); border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,.15); backdrop-filter:blur(8px); transition:opacity .2s; color:var(--nc-tooltip-text); z-index:100; margin-bottom:6px; pointer-events:none; }
+.nc-tooltip-header { font-size:11px; font-weight:600; color:var(--nc-text-dim); text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.nc-tooltip-row { display:flex; align-items:center; gap:8px; }
+.nc-tooltip-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.nc-tooltip-series { font-size:12px; color:var(--nc-text-muted); }
+.nc-tooltip-value { font-size:12px; font-weight:700; color:var(--nc-text); margin-left:auto; }
+.nc-tooltip-arrow { position:absolute; bottom:-4px; left:50%; transform:translateX(-50%) rotate(45deg); width:8px; height:8px; background-color:var(--nc-tooltip-bg); border-right:1px solid var(--nc-border-strong); border-bottom:1px solid var(--nc-border-strong); }
+
+/* Highlight: dim siblings on hover (eases both ways via the base-rule transitions above) */
+.has-highlight .nc-canvas:hover .nc-item { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-item:hover { opacity:1; }
+.has-highlight .nc-canvas:hover .nc-stack { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-stack:hover { opacity:1; }
+
+.nc-threshold { position:absolute; z-index:1; pointer-events:none; }
+.nc-threshold.is-horizontal { left:0; right:0; bottom:0; border-top:1px dotted var(--nc-threshold); background-image:linear-gradient(var(--nc-threshold-fill), transparent) }
+.nc-threshold.is-vertical { top:0; bottom:0; left:0; border-right:1px dotted var(--nc-threshold); background-image:linear-gradient(to left, var(--nc-threshold-fill), transparent) }
+
+.nc-guidelines { position:absolute; top:0; right:0; bottom:0; left:0; overflow:visible; z-index:1; pointer-events:none; }
+.nc-guidelines .nc-guideline { position:absolute; z-index:0; border:0 solid var(--nc-border); }
+
+/* Horizontal guidelines (column, line, area) */
+.nc-guidelines .is-horizontal { border-top-width:1px; }
+
+/* Vertical guidelines (bar, progress, waterfall) */
+.nc-guidelines .is-vertical { border-right-width:1px; }
+
+
+/* Column */
+.nc-column .nc-chart-body { display:grid; grid-template-columns:1fr auto; grid-template-rows:1fr auto; gap:16px; }
+.nc-column .nc-plot { grid-column:1; grid-row:1; position:relative; min-height:0; min-width:0; }
+.nc-column .nc-group { display:flex; align-items:flex-end; position:absolute; bottom:0; }
+.nc-column .nc-stack { position:absolute; bottom:0; display:flex; flex-direction:column-reverse; }
+/* Only opacity/filter transition; left/width/height are set imperatively on resize and must snap,
+   not ease (entry growth uses the nc-grow-up transform animation, not this transition). */
+.nc-column .nc-item { text-align:center; border-radius:1px; transition:opacity .25s, filter .2s; position:relative; }
+.nc-column .nc-main .nc-value { position:absolute; top:-18px; left:0; width:100%; }
+.nc-column .nc-tooltip { bottom:calc(100% + 18px); }
+/* Stacked segments have no value label, so anchor the tooltip directly above the section */
+.nc-column.is-stacked .nc-tooltip { bottom:100%; }
+.nc-baseline { position:absolute; left:0; right:0; border-top:1px solid var(--nc-border-strong); z-index:1; pointer-events:none; }
+
+/* Bar / Waterfall / Bullet — shared horizontal layout */
+.nc-bar .nc-chart-body, .nc-waterfall .nc-chart-body, .nc-bullet .nc-chart-body { display:grid; grid-template-columns:auto 1fr; grid-template-rows:1fr auto; gap:16px; }
+.nc-bar .nc-yaxis, .nc-waterfall .nc-yaxis, .nc-bullet .nc-yaxis { grid-column:1; grid-row:1; display:flex; flex-direction:column; justify-content:stretch; min-width:0; max-width:150px; }
+.nc-bar .nc-yaxis .nc-label-item, .nc-waterfall .nc-yaxis .nc-label-item, .nc-bullet .nc-yaxis .nc-label-item { flex:1; display:flex; align-items:center; justify-content:flex-end; font-size:12px; color:var(--nc-text-muted); min-height:0; cursor:pointer; line-height:1; }
+.nc-bar .nc-yaxis .nc-label-text, .nc-waterfall .nc-yaxis .nc-label-text, .nc-bullet .nc-yaxis .nc-label-text { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; text-align:right; max-width:100%; }
+.nc-bar .nc-plot, .nc-waterfall .nc-plot, .nc-bullet .nc-plot { grid-column:2; grid-row:1; position:relative; min-height:0; min-width:0; overflow:visible; }
+.nc-bar .nc-tooltip, .nc-waterfall .nc-tooltip, .nc-bullet-row .nc-tooltip { left:auto; right:0; transform:none; bottom:100%; margin-bottom:4px; }
+.nc-bar .nc-tooltip .nc-tooltip-arrow, .nc-waterfall .nc-tooltip .nc-tooltip-arrow, .nc-bullet-row .nc-tooltip .nc-tooltip-arrow { left:auto; right:16px; }
+.nc-bar .nc-footer, .nc-waterfall .nc-footer, .nc-bullet .nc-footer { grid-column:2 / -1; }
+
+/* Bar-specific */
+.nc-bar .nc-yaxis .nc-label-group { flex:1; display:flex; align-items:center; justify-content:flex-end; font-size:12px; font-weight:600; color:var(--nc-text-muted); min-height:0; cursor:pointer; min-width:0; }
+.nc-bar .nc-group { position:relative; }
+.nc-bar .nc-stack { display:flex; flex:1; }
+.nc-bar .nc-item { border-radius:15px; position:relative; min-height:0; }
+.nc-bar .nc-main .nc-value { position:absolute; left:100%; top:50%; transform:translateY(-50%); padding-left:6px; white-space:nowrap; font-size:12px; }
+/* When the bar is long enough that an outside value would overflow, place it inside the bar */
+.nc-bar .nc-item.nc-value-inside .nc-main .nc-value { left:auto; right:0; padding-left:0; padding-right:8px; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.4); }
+.nc-bar.is-stacked .nc-stack { position:relative; }
+.nc-bar.is-stacked .nc-item { border-radius:0; flex:none; }
+.nc-bar.is-stacked .nc-stack .nc-item:first-child { border-radius:15px 0 0 15px; }
+.nc-bar.is-stacked .nc-stack .nc-item:last-child { border-radius:0 15px 15px 0; }
+
+/* Progress */
+.nc-progress .nc-chart-body { justify-content:center; }
+.nc-progress .nc-plot { position:relative; width:100%; height:20px; margin:30px 0; flex-shrink:0; }
+.nc-progress.is-fit .nc-plot { height:auto; flex:1; margin:30px 0; }
+.nc-progress .nc-item { position:absolute; height:100%; border-right:none; border-top-color:var(--nc-border); overflow:visible; }
+.nc-progress .nc-main { display:block; position:relative; width:100%; height:100%; }
+.nc-progress .nc-item:first-child { border-radius:3px 0 0 3px }
+.nc-progress .nc-item:last-child { border-radius:0 3px 3px 0 }
+.nc-progress .nc-main .nc-label { position:absolute; bottom:-28px; left:0; width:100%; height:24px; font-size:11px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nc-progress .nc-main .nc-value { position:absolute; top:-22px; left:0; width:100%; text-align:left; font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nc-progress .nc-tooltip { bottom:calc(100% + 22px); }
+
+/* Waterfall-specific */
+.nc-waterfall .nc-item { position:relative; min-height:0; border-radius:15px; }
+.nc-waterfall .nc-item.is-negative { background-image:repeating-linear-gradient(45deg, rgba(0,0,0,.22) 0 4px, transparent 4px 8px); }
+.nc-waterfall .nc-main .nc-value { position:absolute; left:100%; top:50%; transform:translateY(-50%); padding-left:6px; white-space:nowrap; font-size:12px; }
+
+/* Waterfall (vertical) — column-style layout: value axis on the left (y), category labels on the
+   bottom (x). Overrides the shared horizontal bar grid above; each bar is positioned with
+   bottom/height by the renderer and spans a share of the plot width via nth-of-type below. */
+.nc-waterfall.is-waterfall-vertical .nc-chart-body { grid-template-columns:1fr auto; grid-template-rows:1fr auto; }
+.nc-waterfall.is-waterfall-vertical .nc-yaxis { grid-column:2; grid-row:1; flex-direction:column; justify-content:space-between; max-width:none; }
+.nc-waterfall.is-waterfall-vertical .nc-yaxis .nc-label-item { flex:0; justify-content:flex-start; }
+.nc-waterfall.is-waterfall-vertical .nc-plot { grid-column:1; grid-row:1; }
+.nc-waterfall.is-waterfall-vertical .nc-footer { grid-column:1; }
+/* Bars sit on the baseline and grow up; the renderer sets bottom/height. Horizontal placement and
+   width are shared evenly across the plot so each category occupies its own column slot. */
+.nc-waterfall.is-waterfall-vertical .nc-item { position:absolute; bottom:0; border-radius:15px; }
+.nc-waterfall.is-waterfall-vertical .nc-main .nc-value { position:absolute; left:0; top:auto; bottom:100%; transform:none; width:100%; padding-left:0; margin-bottom:4px; text-align:center; }
+
+/* Line & Area */
+.nc-linechart .nc-chart-body, .nc-area .nc-chart-body { display:grid; grid-template-columns:1fr auto; grid-template-rows:1fr auto; gap:16px; }
+.nc-linechart .nc-plot, .nc-area .nc-plot { grid-column:1; grid-row:1; position:relative; min-height:0; min-width:0; overflow:visible; }
+.nc-area-fill { position:absolute; top:0; left:0; width:100%; height:100%; opacity:.25; transition:opacity .25s; }
+/* No transform transition here: segments are repositioned imperatively on resize and must track
+   the dots 1:1 — easing the transform made the line lag behind (dots snap, line drifted after). */
+.nc-line-segment { position:absolute; top:0; left:0; width:1px; height:2px; transform-origin:0 50%; border-radius:1px; transition:opacity .25s; }
+.nc-dot { position:absolute; width:10px; height:10px; margin-left:-5px; margin-top:-5px; border-radius:50%; background-color:var(--nc-bg, #1a1a2e); border:2px solid; cursor:pointer; z-index:2; transition:transform .2s, opacity .25s; }
+.nc-dot:hover { transform:scale(1.6); z-index:1000; }
+.nc-dot .nc-tooltip { left:50%; bottom:100%; top:auto; transform:translateX(-50%); margin-bottom:8px; }
+.nc-dot:hover .nc-tooltip { display:block; margin-top:-6px; transform:translateX(-50%) scale(0.625); transform-origin:bottom center; }
+.has-highlight .nc-canvas:hover .nc-dot { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-dot:hover { opacity:1; }
+.has-highlight .nc-canvas:hover .nc-line-segment { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-area-fill { opacity:.05; }
+
+/* Axis labels (grid layout) */
+.nc-yaxis { grid-column:2; grid-row:1; display:flex; flex-direction:column; justify-content:space-between; min-width:0; }
+/* Bar/waterfall label dimming is driven from JS (inline opacity); the transition lives here so
+   both the dim and the restore ease instead of snapping. */
+.nc-yaxis .nc-label-item, .nc-yaxis .nc-label-group { transition:opacity .25s; }
+.nc-xaxis { display:flex; justify-content:space-between; overflow:hidden; min-width:0; }
+.nc-xaxis .nc-axis-label { min-width:0; }
+.nc-axis-label { font-size:11px; color:var(--nc-text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+/* Heatmap */
+.nc-heatmap .nc-plot { position:relative; width:100%; flex:1; min-height:0; padding:0 0 0 80px; display:grid; grid-template-rows:auto 1fr; gap:0; }
+.nc-heatmap-col-labels { display:grid; gap:2px; padding-bottom:8px; min-width:0; }
+.nc-heatmap-col-label { font-size:11px; font-weight:600; color:var(--nc-text-muted); text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; min-width:0; }
+.nc-heatmap-grid { display:grid; gap:2px; position:relative; min-width:0; min-height:0; }
+.nc-heatmap-cell { position:relative; display:flex; align-items:center; justify-content:center; border-radius:3px; cursor:pointer; transition:filter .2s, transform .15s; min-height:0; min-width:0; overflow:hidden; }
+.nc-heatmap-cell:hover { transform:scale(1.05); z-index:10; }
+.nc-heatmap-cell:hover .nc-tooltip { display:block; margin-top:-6px; }
+.nc-heatmap-cell .nc-tooltip { left:50%; bottom:100%; top:auto; transform:translateX(-50%); margin-bottom:8px; }
+.nc-heatmap-value { font-size:11px; font-weight:600; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.nc-light .nc-heatmap-value { color:#1c1c1e; text-shadow:none; }
+.nc-heatmap-row-labels { position:absolute; left:0; top:0; bottom:0; width:70px; display:grid; padding-top:28px; gap:2px; }
+.nc-heatmap-row-label { font-size:11px; font-weight:600; color:var(--nc-text-muted); display:flex; align-items:center; justify-content:flex-end; padding-right:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.has-highlight .nc-heatmap-grid:hover .nc-heatmap-cell { filter:brightness(.5) saturate(.3); }
+.has-highlight .nc-heatmap-grid:hover .nc-heatmap-cell:hover { filter:brightness(1.1) saturate(1.2); outline:2px solid var(--nc-text); outline-offset:-1px; }
+
+/* Treemap */
+.nc-treemap .nc-plot { position:relative; width:100%; flex:1; min-height:0; }
+.nc-treemap-cell { position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; overflow:hidden; transition:opacity .2s, filter .2s; }
+.nc-treemap-cell:hover { z-index:10; filter:brightness(1.2); }
+.nc-treemap-cell:hover .nc-tooltip { display:block; margin-top:-6px; }
+.nc-treemap-cell .nc-tooltip { left:50%; bottom:100%; top:auto; transform:translateX(-50%); margin-bottom:8px; }
+.nc-treemap-label { font-size:12px; font-weight:600; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5); text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:90%; }
+.nc-light .nc-treemap-label { color:#1c1c1e; text-shadow:none; }
+.nc-treemap-value { font-size:11px; color:rgba(255,255,255,.85); text-shadow:0 1px 3px rgba(0,0,0,.5); }
+.nc-light .nc-treemap-value { color:rgba(0,0,0,.7); text-shadow:none; }
+.has-highlight .nc-canvas:hover .nc-treemap-cell { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-treemap-cell:hover { opacity:1; }
+/* Luminance-aware text on solid cells (overrides theme defaults) */
+.nc-chart .nc-treemap-cell.is-text-dark .nc-treemap-label, .nc-chart .nc-funnel-item.is-text-dark .nc-funnel-label { color:#1c1c1e; text-shadow:none; }
+.nc-chart .nc-treemap-cell.is-text-dark .nc-treemap-value, .nc-chart .nc-funnel-item.is-text-dark .nc-funnel-value { color:rgba(0,0,0,.7); text-shadow:none; }
+.nc-chart .nc-treemap-cell.is-text-light .nc-treemap-label, .nc-chart .nc-funnel-item.is-text-light .nc-funnel-label { color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5); }
+.nc-chart .nc-treemap-cell.is-text-light .nc-treemap-value, .nc-chart .nc-funnel-item.is-text-light .nc-funnel-value { color:rgba(255,255,255,.85); text-shadow:0 1px 3px rgba(0,0,0,.5); }
+
+/* Footer (x-axis + legend) — always rendered for consistent height across sibling charts */
+.nc-footer { grid-column:1 / -1; min-height:24px; display:flex; flex-direction:column; gap:8px; }
+
+/* Legend */
+.nc-legend { width:100%; display:flex; flex-wrap:wrap; gap:16px; justify-content:center; flex-shrink:0; }
+.nc-legend-item { display:flex; align-items:center; gap:6px; }
+.nc-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.nc-legend-label { font-size:12px; color:var(--nc-text-muted); }
+
+/* Pie & Donut */
+.nc-pie .nc-chart-body { justify-content:center; }
+.nc-pie .nc-plot { position:relative; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; }
+.nc-pie-ring { position:relative; border-radius:50%; aspect-ratio:1; height:100%; max-width:100%; cursor:pointer; }
+.nc-pie-highlight { position:absolute; border-radius:50%; aspect-ratio:1; height:100%; max-width:100%; pointer-events:none; display:none; top:50%; left:50%; transform:translate(-50%,-50%); }
+.nc-pie-tip-item { position:absolute; z-index:100; pointer-events:none; }
+.nc-pie-tip-item .nc-tooltip { display:block; position:relative; transform:none; left:auto; bottom:auto; white-space:nowrap; }
+
+/* Top: slice is above center → tooltip above anchor, arrow at bottom pointing down */
+.nc-pie-tip-item.nc-tip-top { transform:translate(-50%,-100%); margin-top:-8px; }
+.nc-pie-tip-item.nc-tip-top .nc-tooltip-arrow { bottom:-4px; left:50%; top:auto; right:auto; transform:translateX(-50%) rotate(45deg); border-right:1px solid var(--nc-border-strong); border-bottom:1px solid var(--nc-border-strong); border-left:none; border-top:none; }
+
+/* Bottom: slice is below center → tooltip below anchor, arrow at top pointing up */
+.nc-pie-tip-item.nc-tip-bottom { transform:translate(-50%,0%); margin-top:8px; }
+.nc-pie-tip-item.nc-tip-bottom .nc-tooltip-arrow { top:-4px; left:50%; bottom:auto; right:auto; transform:translateX(-50%) rotate(45deg); border-left:1px solid var(--nc-border-strong); border-top:1px solid var(--nc-border-strong); border-right:none; border-bottom:none; }
+
+/* Right: slice is to the right → tooltip right of anchor, arrow on left pointing left */
+.nc-pie-tip-item.nc-tip-right { transform:translate(-30%,-50%); }
+.nc-pie-tip-item.nc-tip-right .nc-tooltip-arrow { left:-4px; top:50%; bottom:auto; right:auto; transform:translateY(-50%) rotate(45deg); border-bottom:1px solid var(--nc-border-strong); border-left:1px solid var(--nc-border-strong); border-right:none; border-top:none; }
+
+/* Left: slice is to the left → tooltip left of anchor, arrow on right pointing right */
+.nc-pie-tip-item.nc-tip-left { transform:translate(-70%,-50%); }
+.nc-pie-tip-item.nc-tip-left .nc-tooltip-arrow { right:-4px; top:50%; bottom:auto; left:auto; transform:translateY(-50%) rotate(45deg); border-top:1px solid var(--nc-border-strong); border-right:1px solid var(--nc-border-strong); border-bottom:none; border-left:none; }
+
+/* Bullet-specific */
+.nc-bullet-row { position:relative; overflow:visible; }
+.nc-bullet-row:hover .nc-tooltip { display:block; }
+.nc-bullet-range { position:absolute; top:0; left:0; height:100%; background-color:var(--nc-bullet-band); border-radius:2px; }
+.nc-bullet-bar { position:absolute; height:40%; top:30%; border-radius:2px; z-index:2; }
+.nc-bullet-target { position:absolute; top:10%; height:80%; width:3px; background-color:var(--nc-text); z-index:3; transform:translateX(-50%); border-radius:1px; }
+.nc-bullet-row .nc-tooltip { z-index:100; }
+
+/* Funnel */
+.nc-funnel .nc-chart-body { justify-content:stretch; }
+.nc-funnel .nc-plot { position:relative; flex:1; display:flex; flex-direction:column; min-height:0; }
+.nc-funnel-wrap { position:relative; flex:1; min-height:20px; cursor:pointer; transition:opacity .25s; }
+.nc-funnel-wrap:hover .nc-funnel-item { filter:brightness(1.15); }
+.nc-funnel-wrap:hover .nc-tooltip { display:block; }
+.nc-funnel-wrap .nc-tooltip { position:absolute; left:50%; bottom:100%; top:auto; transform:translateX(-50%); margin-bottom:8px; z-index:100; }
+.nc-funnel-item { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:8px; transition:filter .2s; }
+.nc-funnel-label { font-size:12px; font-weight:600; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.5); text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+.nc-funnel-value { font-size:11px; color:rgba(255,255,255,.85); text-shadow:0 1px 3px rgba(0,0,0,.5); text-align:center; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; max-width:100%; }
+.nc-light .nc-funnel-label { color:#1c1c1e; text-shadow:none; }
+.nc-light .nc-funnel-value { color:rgba(0,0,0,.7); text-shadow:none; }
+.has-highlight .nc-canvas:hover .nc-funnel-wrap { opacity:.3; }
+.has-highlight .nc-canvas:hover .nc-funnel-wrap:hover { opacity:1; }
+
+/* Funnel — flipped (mirror the whole flow axis so the base is widest; keep text upright).
+   The item label/value are flex-centered (static position), so they only need the counter-mirror
+   to read upright — no translate. The tooltip is absolutely positioned at left:50%, so it keeps
+   its translateX(-50%) centering on top of the counter-mirror. */
+.is-funnel-flipped:not(.is-funnel-horizontal) .nc-plot { transform:scaleY(-1); }
+.is-funnel-flipped:not(.is-funnel-horizontal) .nc-funnel-item > * { transform:scaleY(-1); }
+.is-funnel-flipped:not(.is-funnel-horizontal) .nc-funnel-wrap > .nc-tooltip { transform:translateX(-50%) scaleY(-1); }
+.is-funnel-horizontal.is-funnel-flipped .nc-plot { transform:scaleX(-1); }
+.is-funnel-horizontal.is-funnel-flipped .nc-funnel-item > * { transform:scaleX(-1); }
+.is-funnel-horizontal.is-funnel-flipped .nc-funnel-wrap > .nc-tooltip { transform:translateX(-50%) scaleX(-1); }
+
+/* Funnel — horizontal (left-to-right flow) */
+.nc-funnel.is-funnel-horizontal .nc-plot { flex-direction:row; }
+.is-funnel-horizontal .nc-funnel-item { flex-direction:column; gap:2px; padding:0 4px; }
+.is-funnel-horizontal .nc-funnel-wrap .nc-tooltip { left:50%; bottom:auto; top:100%; transform:translateX(-50%); margin-bottom:0; margin-top:8px; }
+/* Flip the tooltip arrow to point up when it sits below the band */
+.is-funnel-horizontal .nc-funnel-wrap .nc-tooltip .nc-tooltip-arrow { bottom:auto; top:-4px; border-right:none; border-bottom:none; border-left:1px solid var(--nc-border-strong); border-top:1px solid var(--nc-border-strong); }
+
+/* Animation */
+@keyframes nc-grow-up { from { transform:scaleY(0); } to { transform:scaleY(1); } }
+@keyframes nc-grow-right { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes nc-fade-in { from { opacity:0; } to { opacity:1; } }
+/* Entry animations fill `backwards`, NOT `both`/`forwards`: backwards still hides staggered items
+   during their animation-delay, but stops the animation from applying once it ends (the end
+   keyframe equals each element's natural state, so nothing visibly changes at that hand-off).
+   A forwards fill kept overriding the animated property forever, which silently disabled the
+   highlight hover-dim on every fade-in chart — the filled opacity:1 outranked the hover rule's .3. */
+.nc-animate.nc-column .nc-item { animation:nc-grow-up .6s ease-out backwards; transform-origin:bottom; }
+.nc-animate.nc-bar .nc-item { animation:nc-grow-right .6s ease-out backwards; transform-origin:left; }
+.nc-animate.nc-progress .nc-item { animation:nc-grow-right .6s ease-out backwards; transform-origin:left; }
+.nc-animate.nc-waterfall .nc-item { animation:nc-grow-right .6s ease-out backwards; transform-origin:left; }
+/* Vertical waterfall bars are columns, so they grow up from the baseline, not sideways. */
+.nc-animate.nc-waterfall.is-waterfall-vertical .nc-item { animation-name:nc-grow-up; transform-origin:bottom; }
+.nc-animate.nc-linechart .nc-dot,
+.nc-animate.nc-area .nc-dot { animation:nc-fade-in .4s ease-out backwards; }
+.nc-animate.nc-linechart .nc-line-segment,
+.nc-animate.nc-area .nc-line-segment { animation:nc-fade-in .4s ease-out backwards; }
+.nc-animate.nc-area .nc-area-fill { animation:nc-fade-in .6s ease-out backwards; }
+.nc-animate.nc-heatmap .nc-heatmap-cell { animation:nc-fade-in .4s ease-out backwards; }
+.nc-animate.nc-treemap .nc-treemap-cell { animation:nc-fade-in .4s ease-out backwards; }
+/* Pie/donut entry is a clockwise sweep driven in JS (see renderPie's paint loop): the ring unfurls
+   from 12 o'clock, slices revealing as the sweep passes. No CSS keyframe — a fade would double up. */
+.nc-animate.nc-bullet .nc-bullet-bar { animation:nc-grow-right .6s ease-out backwards; transform-origin:left; }
+/* Each band fades in on its own — the per-item animation-delay (set in JS) lands on .nc-funnel-item,
+   so the animation must run there (not on the wrap) for the bands to stagger one after another. */
+.nc-animate.nc-funnel .nc-funnel-item { animation:nc-fade-in .4s ease-out backwards; }
+/* Text inside a growing item rides the parent's scale transform and smears while the bar grows;
+   keep it invisible until the bar is essentially full-size (its stagger delay + .45s of the .6s
+   ease-out growth), then fade it in. --nc-delay is set inline by delay() alongside the item's
+   animation-delay, so each label follows its own bar's stagger. */
+.nc-animate.nc-column .nc-item .nc-value,
+.nc-animate.nc-bar .nc-item .nc-value,
+.nc-animate.nc-progress .nc-item .nc-value,
+.nc-animate.nc-progress .nc-item .nc-label,
+.nc-animate.nc-waterfall .nc-item .nc-value { animation:nc-fade-in .25s ease-out backwards; animation-delay:calc(var(--nc-delay, 0s) + .45s); }
+
+/* Respect the user's motion preference: skip entry animations and hover transitions
+   (end keyframes match each element's natural state, so removing the animation shows it). */
+@media (prefers-reduced-motion: reduce) {
+  .nc-chart, .nc-chart * { animation:none !important; transition:none !important; }
+}
+
+/* Gauge */
+.nc-gauge.nc-chart { position:relative; background-color:transparent; border-radius:16px; overflow:visible; }
+.nc-gauge .nc-title { padding:0 0 10px; color:var(--nc-text); }
+.nc-gauge .nc-plot { position:relative; flex:1; min-height:0; display:flex; align-items:center; justify-content:center; }
+/* The ring stays a perfect circle by sizing to the SMALLER of the plot's width/height. Using
+   height:100% + max-width:100% (the old rule) let a tall-narrow plot keep full height while width
+   was clamped, producing an oval box; the `circle closest-side` mask then carved a circle to the
+   short side while the conic-gradient painted the full oval, leaking the fill past the arc. Driving
+   the size off block-size (height) with aspect-ratio:1 and capping both axes keeps it square. */
+/* The ring stays a perfect circle by fitting the largest square inside the plot. The old rule
+   (height:100% + max-width:100%) let a tall-narrow plot keep full height while width was clamped,
+   producing an OVAL box; the `circle closest-side` mask then carved a circle to the short side while
+   the conic-gradient painted the full oval, leaking the fill past the arc. Sizing off height (min of
+   100% and the plot's inline size) with aspect-ratio:1 keeps width == height in every box shape. */
+.nc-gauge .nc-ring { position:relative; border-radius:50%; aspect-ratio:1; block-size:min(100%, 100cqi); max-inline-size:100%; -webkit-mask:radial-gradient(circle closest-side, transparent calc(100% - var(--gauge-thickness, 14px)), #000 calc(100% - var(--gauge-thickness, 14px) + 1px)); mask:radial-gradient(circle closest-side, transparent calc(100% - var(--gauge-thickness, 14px)), #000 calc(100% - var(--gauge-thickness, 14px) + 1px)); }
+.nc-gauge .nc-plot { container-type:size; }
+.nc-gauge .nc-ring-content { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:1; }
+.nc-gauge .nc-ring-content .nc-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:2px; color:var(--nc-text-muted); margin-bottom:4px; }
+/* tabular-nums keeps every digit the same width, so the counting value doesn't wobble
+   horizontally while the entry animation ticks it up. */
+.nc-gauge .nc-ring-content .nc-value { font-size:var(--gauge-value-size, 48px); font-weight:700; color:var(--nc-text); line-height:1; font-variant-numeric:tabular-nums; }

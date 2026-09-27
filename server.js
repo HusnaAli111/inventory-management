@@ -13,7 +13,7 @@ const Category = require('./models/Category')
 const Product = require('./models/Product')
 const User = require('./models/User')
 const StockMovement = require('./models/stockMovement')
-
+const XLSX = require("xlsx")
 
 // middleware imports
 const isSignedIn = require("./middleware/is-signed-in.js");

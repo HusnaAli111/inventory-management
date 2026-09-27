@@ -16,8 +16,9 @@ router.post('/', async (req, res) => {
         price: req.body.price,
         quantity: req.body.quantity,
         minStock: req.body.minStock,
-        category: req.body.category
-    });
+        category: req.body.category,
+        image: req.body.image
+    })
 
     res.redirect('/products');
 });
@@ -27,7 +28,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find();
 
     res.render('allProduct.ejs', { products });
-});
+})
 
 //view product id for one product
 
@@ -43,7 +44,7 @@ router.get('/:id/edit', async (req, res) => {
 
     res.render('edit.ejs', { product: product });
 
-});
+})
 
 router.put('/:id',async(req,res)=>{
     const edit=await Product.findByIdAndUpdate(req.params.id,{
@@ -64,7 +65,10 @@ router.delete('/:id', async (req, res) => {
 
     res.redirect('/products');
 
-});
+})
+
+//img
+
 
 
 module.exports = router;

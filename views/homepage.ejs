@@ -4,11 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <%- include('./partials/navbar') %>
+    <!-- <%- include('./partials/navbar') %> -->
 
-    <h1>Welcome to my Website</h1>
+    <!-- Top Bar -->
+
+<div class="topbar">
+
+    <div class="logo">
+        Inventory System
+    </div>
+
+    <div class="menu">
+        ☰
+    </div>
+
+</div>
+
+
+<!-- Sidebar -->
+
+<div class="sidebar">
+
+    <a href="/">Dashboard</a>
+
+    <a href="/products">Products</a>
+
+    <a href="/stock/new">Stock Movement</a>
+
+    <a href="/categories">Categories</a>
+
+    <a href="/auth/sign-out">Sign Out</a>
+
+</div>
+
+
+<!-- Main Content -->
+
+<!-- <div class="main">
+
+    <h1>Dashboard</h1>
+
+    <p>Welcome to the Inventory Management System</p> -->
+
+    <div class="main">
+
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card blue">
+            <h2>0</h2>
+            <p>Products</p>
+        </div>
+
+        <div class="card green">
+            <h2>0</h2>
+            <p>Categories</p>
+        </div>
+
+        <div class="card orange">
+            <h2>0</h2>
+            <p>Stock In</p>
+        </div>
+
+        <div class="card red">
+            <h2>0</h2>
+            <p>Stock Out</p>
+        </div>
+
+    </div>
+
+
+    <div class="chart-box">
+
+        <h2>Stock Overview</h2>
+
+        <p>Stock In</p>
+        <div class="bar">
+            <div class="stock-in">70%</div>
+        </div>
+
+        <p>Stock Out</p>
+        <div class="bar">
+            <div class="stock-out">40%</div>
+        </div>
+
+        <p>Available Stock</p>
+        <div class="bar">
+            <div class="available">85%</div>
+        </div>
+
+    </div>
+<div class="recent-products">
+
+    <h2>Recent Products</h2>
+<!-- //table section -->
+<table>
+
+    <tr>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Category</th>
+    </tr>
+
+    <% for(let product of products){ %>
+
+        <tr>
+
+            <td><%= product.name %></td>
+
+            <td><%= product.price %> BHD</td>
+
+            <td><%= product.quantity %></td>
+
+            <td><%= product.category.name %></td>
+
+        </tr>
+
+    <% } %>
+
+</table>
+
+</div>
+</div>
+
+</div>
     
 </body>
 </html>

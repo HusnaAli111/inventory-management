@@ -4,22 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <div class="topbar">
 
-    <h1>Add Category</h1>
+        <div class="logo">
+            Inventory System
+        </div>
 
-    <form action="/categories" method="POST">
+        <div class="menu">
+            ☰
+        </div>
 
-        <label for="name">Category Name:</label>
+    </div>
 
-        <input type="text" name="name" id="name">
 
-        <br><br>
+    <!-- Sidebar -->
 
-        <button type="submit">Add Category</button>
+    <div class="sidebar">
 
-    </form>
+        <a href="/">Dashboard</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/stock/new">Stock Movement</a>
+
+        <% if(user && user.role === 'admin'){ %>
+        <a href="/categories">Categories</a>
+        <% } %>
+
+        <a href="/auth/sign-out">Sign Out</a>
+
+    </div>
+    <div class="main">
+
+        <div class="add-category-page">
+
+            <div class="add-category-header">
+
+                <div class="category-big-icon">
+                    +
+                </div>
+
+                <h1>Add Category</h1>
+
+                <p>Create a new category for your products.</p>
+
+            </div>
+
+
+            <form action="/categories" method="POST">
+
+                <label for="name">Category Name</label>
+
+                <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Enter category name"
+                >
+
+
+                <button type="submit">
+                    Add Category →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </body>
 </html>

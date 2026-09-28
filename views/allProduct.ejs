@@ -4,24 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
+            <link rel="stylesheet" href="/css/style.css">
+
 </head>
-
 <body>
+    <div class="topbar">
 
-    <h1> Inventory Managamet System</h1>
+        <div class="logo">
+            Inventory System
+        </div>
 
-<% for(let product of products){%>
-        <h2>name: <%= product.name %></h2>
-        <!-- <p>description: <%= product.description %></p> -->
-        <p>price: <%= product.price %></p>
-        <!-- <p>quantity: <%= product.quantity %></p> -->
-        <!-- <p>minStock: <%= product.minStock %></p> -->
+        <div class="menu">
+            ☰
+        </div>
 
-    <a href="/products/<%= product._id %>">View Product</a>    
+    </div>
 
 
-    <%}%>
+    <!-- Sidebar -->
 
+    <div class="sidebar">
+
+        <a href="/">Dashboard</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/stock/new">Stock Movement</a>
+
+        <% if(user && user.role === 'admin'){ %>
+        <a href="/categories">Categories</a>
+        <% } %>
+
+        <a href="/auth/sign-out">Sign Out</a>
+
+    </div>
+
+
+    <div class="main">
+
+        <div class="products-page">
+
+            <div class="products-header">
+
+                <div>
+                    <h1>Products</h1>
+                    <p>Manage your inventory products</p>
+                </div>
+
+                <a href="/products/new" class="add-product-button">
+                    + Add Product
+                </a>
+
+            </div>
+
+
+            <div class="products-list">
+
+                <% for(let product of products){ %>
+
+                    <div class="product-card">
+
+                        <div class="product-image">
+                                <img src="/<%= product.picture %>" alt="<%= product.name %>">
+
+                        </div>
+
+                        <div class="product-info">
+
+                            <h2>
+                                <%= product.name %>
+                            </h2>
+
+                            <p class="product-price">
+                                <%= product.price %> BHD
+                            </p>
+
+                            <a href="/products/<%= product._id %>" class="view-product">
+                                View Product →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 </html>

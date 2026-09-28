@@ -4,51 +4,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+            <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
+        <div class="topbar">
 
-    <h1>Stock Movement</h1>
+        <div class="logo">
+            Inventory System
+        </div>
 
-    <form action="/stock" method="POST">
+        <div class="menu">
+            ☰
+        </div>
 
-        <label>Product:</label>
+    </div>
 
-        <select name="product" required>
 
-            <% for(let product of products){ %>
+    <!-- Sidebar -->
 
-                <option value="<%= product._id %>">
-                    <%= product.name %>
-                </option>
+    <div class="sidebar">
 
-            <% } %>
+        <a href="/">Dashboard</a>
 
-        </select>
+        <a href="/products">Products</a>
 
-        <br><br>
+        <a href="/stock/new">Stock Movement</a>
 
-        <label>Type:</label>
+        <% if(user && user.role === 'admin'){ %>
+        <a href="/categories">Categories</a>
+        <% } %>
 
-        <select name="type">
+        <a href="/auth/sign-out">Sign Out</a>
 
-            <option value="IN">IN</option>
-            <option value="OUT">OUT</option>
+    </div>
 
-        </select>
+    <div class="main">
 
-        <br><br>
+        <div class="stock-page">
 
-        <label>Quantity:</label>
+            <div class="stock-header">
+                <h1>Stock Movement</h1>
+                <p>Record products coming in or going out of your inventory.</p>
+            </div>
 
-        <input type="number" name="quantity">
 
-        <br><br>
+            <form action="/stock" method="POST">
 
-        
+                <div class="stock-content">
 
-        <button type="submit">Save</button>
+                    <div class="stock-icon">
+                        📦
+                    </div>
 
-    </form>
+
+                    <div class="stock-fields">
+
+                        <label>Product:</label>
+
+                        <select name="product" required>
+
+                            <% for(let product of products){ %>
+
+                                <option value="<%= product._id %>">
+                                    <%= product.name %>
+                                </option>
+
+                            <% } %>
+
+                        </select>
+
+
+                        <label>Movement Type:</label>
+
+                        <select name="type">
+
+                            <option value="IN">Stock IN</option>
+                            <option value="OUT">Stock OUT</option>
+
+                        </select>
+
+
+                        <label>Quantity:</label>
+
+                        <input type="number" name="quantity">
+
+
+                        <button type="submit">
+                            Save Movement →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </body>
 </html>

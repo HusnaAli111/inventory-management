@@ -4,18 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <link rel="stylesheet" href="/css/style.css">
+
 </head>
 <body>
+    
+<div class="topbar">
 
-    <h1>Categories</h1>
+        <div class="logo">
+            Inventory System
+        </div>
 
-    <a href="/categories/new">Add Category</a>
+        <div class="menu">
+            ☰
+        </div>
 
-    <br><br>
-    <% for(let category of categories){ %>
-        <p>
-            <%= category.name %>
-        </p>
-    <% } %>
+    </div>
+
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <a href="/">Dashboard</a>
+
+        <a href="/products">Products</a>
+
+        <a href="/stock/new">Stock Movement</a>
+
+        <% if(user && user.role === 'admin'){ %>
+        <a href="/categories">Categories</a>
+        <% } %>
+
+        <a href="/auth/sign-out">Sign Out</a>
+
+    </div>
+    <div class="main">
+
+        <div class="categories-page">
+
+            <div class="categories-header">
+
+                <div>
+                    <h1>Categories</h1>
+                    <p>Organize your products into categories.</p>
+                </div>
+
+                <a href="/categories/new" class="add-category-button">
+                    + Add Category
+                </a>
+
+            </div>
+
+
+            <div class="category-list">
+
+                <% for(let category of categories){ %>
+
+                    <div class="category-card">
+
+                        <div class="category-icon">
+                            #
+                        </div>
+
+                        <div class="category-info">
+
+    <h2>
+        <%= category.name %>
+    </h2>
+
+    <a href="/categories/<%= category._id %>/edit" class="edit-category-button">
+        Edit
+    </a>
+
+</div>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 </html>

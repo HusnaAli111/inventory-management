@@ -25,7 +25,7 @@ const indexController = require("./routes/index.routes.js");
 const productController=require('./routes/product.routes.js')
 const stockController = require('./routes/stock.routes.js')
 const categoryController = require('./routes/category.routes.js')
-
+const uploadRoutes = require("./routes/upload.routes")
 
 // Middleware
 app.use(express.static('public')) // my app will serve all static files from public folder
@@ -66,7 +66,7 @@ app.use('/',indexController)
 app.use('/products', productController)
 app.use('/stock', stockController)
 app.use('/categories', categoryController)
-
+app.use("/upload", uploadRoutes)
 
 
 // connect to database and listen on Port 3000

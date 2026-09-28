@@ -1,6 +1,7 @@
 const router = require("express").Router()
 const Category = require("../models/Category");
 const Product = require('../models/Product')
+const upload = require('../middleware/upload')
 
 // create the product - form
 router.get('/new', async(req, res) => {
@@ -8,7 +9,8 @@ router.get('/new', async(req, res) => {
     res.render('new.ejs',{categories:categories});
 })
 // product create
-router.post('/', async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
+
 
     const product = await Product.create({
         name: req.body.name,
@@ -17,7 +19,7 @@ router.post('/', async (req, res) => {
         quantity: req.body.quantity,
         minStock: req.body.minStock,
         category: req.body.category,
-        image: req.body.image
+        picture: `uploads/${req.file.filename}`
     })
 
     res.redirect('/products');

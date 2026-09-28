@@ -215,3 +215,808 @@ td {
 .edit-button:hover {
     background-color: #d98200;
 }
+
+/* form section add product new.ejs page */
+.product-page {
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #dddddd;
+    margin-right: 160px;
+    padding: 50px;
+}
+
+.product-header {
+    background-color: #222d32;
+    color: white;
+    padding: 30px;
+}
+
+.product-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.product-header p {
+    color: #dddddd;
+}
+
+.product-content {
+    display: flex;
+    padding: 35px;
+    gap: 40px;
+}
+
+.image-section {
+    width: 40%;
+    background-color: #f3f0ff;
+    border: 2px dashed #7b61ff;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+}
+
+.image-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #7b61ff;
+    color: white;
+    border-radius: 50%;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-right: 70px;
+    margin-left: 50px;
+    margin-bottom: 60px;
+    padding-top: 10px;
+}
+
+.image-section h2 {
+    color: #222d32;
+    margin-bottom: 10px;
+}
+
+.image-section p {
+    color: #777777;
+    margin-bottom: 25px;
+}
+
+.image-section input {
+    width: 100%;
+}
+
+.details-section {
+    width: 60%;
+}
+
+.details-section label {
+    display: block;
+    margin-bottom: 7px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.details-section input,
+.details-section select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.details-section input:focus,
+.details-section select:focus {
+    border-color: #7b61ff;
+    background-color: white;
+}
+
+.small-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.small-fields div {
+    width: 50%;
+}
+
+.details-section button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.details-section button:hover {
+    background-color: #6248e8;
+}
+/* style for the all products page */
+
+.products-page {
+    width: 95%;
+    margin: 30px auto;
+}
+
+.products-header {
+    background-color: #222d32;
+    color: white;
+    padding: 25px 25px;
+    width: 95%;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    margin-top: 80px;
+}
+
+.products-header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-family: 'cooper';
+}
+
+.products-header p {
+    color: #dddddd;
+}
+
+.add-product-button {
+    background-color: #7b61ff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.add-product-button:hover {
+    background-color: #6248e8;
+}
+
+.products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.product-card {
+    background-color: white;
+    width: 30%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #dddddd;
+}
+
+.product-image {
+    height: 160px;
+    background-color: #f3f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h2 {
+    color: #222d32;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    color: #7b61ff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.view-product {
+    display: inline-block;
+    background-color: #00a9d8;
+    color: white;
+    text-decoration: none;
+    padding: 9px 14px;
+    border-radius: 6px;
+}
+
+.view-product:hover {
+    background-color: #008bb5;
+}
+.product-image {
+    height: 160px;
+    background-color: #f3f0ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+/* styling the stock-new */
+
+.stock-page {
+    width: 80%;
+    margin: 40px auto;
+    background-color: white;
+}
+
+.stock-header {
+    background-color: #222d32;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.stock-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-family: 'cooper';
+}
+
+.stock-header p {
+    color: #dddddd;
+}
+
+.stock-content {
+    padding: 40px;
+    text-align: center;
+}
+
+.stock-icon {
+    width: 90px;
+    height: 90px;
+    background-color: #fff3e0;
+    border-radius: 50%;
+    margin-left: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+.stock-fields {
+    width: 70%;
+    text-align: left;
+    margin: 60px;
+}
+
+.stock-fields label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.stock-fields select,
+.stock-fields input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+    font-size: 15px;
+}
+
+.stock-fields button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.stock-fields button:hover {
+    background-color: #6248e8;
+}
+/* styling the view one product page-show.ejs */
+
+.product-details {
+    width: 90%;
+    margin: 40px auto;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #dddddd;
+}
+
+.details-header {
+    background-color: #222d32;
+    color: white;
+    padding: 30px;
+}
+
+.details-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-family: 'cooper';
+}
+
+.details-header p {
+    color: #dddddd;
+}
+
+.details-content {
+    display: flex;
+    gap: 50px;
+    padding: 40px;
+    margin-right: 60px;
+}
+
+.details-image {
+    width: 45%;
+    height: 350px;
+    background-color: #f3f0ff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details-image img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+.details-info {
+    width: 55%;
+}
+
+.details-info h2 {
+    font-size: 30px;
+    color: #222d32;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: #777777;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.info-boxes {
+    display: flex;
+    gap: 20px;
+}
+
+.info-box {
+    width: 50%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.info-box p {
+    margin-bottom: 8px;
+    color: #666666;
+}
+
+.info-box h3 {
+    font-size: 22px;
+}
+
+.price-box {
+    background-color: #f3f0ff;
+    color: #7b61ff;
+}
+
+.quantity-box {
+    background-color: #e8f8f1;
+    color: #00a65a;
+}
+
+.details-buttons {
+    display: flex;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.edit-product {
+    background-color: #f39c12;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    margin-left: 50px;
+}
+
+.edit-product:hover {
+    background-color: #d98200;
+}
+
+.delete-product {
+    background-color: #dd4b39;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-left: 20px;
+}
+
+.delete-product:hover {
+    background-color: #c0392b;
+}
+/* styling the edit page */
+/* Edit Product Page */
+
+.edit-page {
+    width: 80%;
+    margin: 40px auto;
+    background-color: white;
+}
+
+.edit-header {
+    background-color: #222d32;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.edit-header h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-family: 'cooper';
+}
+
+.edit-header p {
+    color: #dddddd;
+}
+
+.edit-content {
+    padding: 40px;
+}
+
+.edit-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #fff3e0;
+    border-radius: 50%;
+    margin-left: 290px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+.edit-fields {
+    width: 70%;
+    margin: auto;
+}
+
+.edit-fields label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.edit-fields input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.edit-fields input:focus {
+    border-color: #f39c12;
+    outline: none;
+    background-color: white;
+}
+
+.edit-small-fields {
+    display: flex;
+    gap: 15px;
+}
+
+.edit-small-fields div {
+    width: 50%;
+}
+
+.edit-fields button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.edit-fields button:hover {
+    background-color: #6248e8;
+}
+/* styling the admin category page */
+ /* Categories Page */
+
+.categories-page {
+    width: 90%;
+    margin: 40px ;
+}
+
+.categories-header {
+    background-color: #222d32;
+    color: white;
+    padding: 25px 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 95%;
+}
+
+.categories-header h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-family: 'cooper';
+}
+
+.categories-header p {
+    color: #dddddd;
+}
+
+.add-category-button {
+    background-color: #7b61ff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.add-category-button:hover {
+    background-color: #6248e8;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.category-card {
+    background-color: white;
+    width: 30%;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px #dddddd;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.category-icon {
+    width: 60px;
+    height: 55px;
+    background-color: #f3f0ff;
+    color: #7b61ff;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+.category-info h2 {
+    color: #222d32;
+    margin-bottom: 5px;
+}
+
+.edit-category-button {
+    display: inline-block;
+    background-color: #f39c12;
+    color: white;
+    text-decoration: none;
+    padding: 10px 80px;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 30px;
+    
+    
+}
+
+.edit-category-button:hover {
+    background-color: #d98200;
+}
+/* styling the category add for admin -category-new */
+
+.add-category-page {
+    width: 60%;
+    margin: 60px auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 5px 20px #dddddd;
+}
+
+.add-category-header {
+    margin-bottom: 30px;
+}
+
+.category-big-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #f3f0ff;
+    color: #7b61ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+    margin: 0 auto 20px auto;
+}
+
+.add-category-header h1 {
+    color: #222d32;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.add-category-header p {
+    color: #888888;
+}
+
+.add-category-page form {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+
+.add-category-page label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.add-category-page input {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.add-category-page input:focus {
+    border-color: #7b61ff;
+    outline: none;
+    background-color: white;
+}
+
+.add-category-page button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.add-category-page button:hover {
+    background-color: #6248e8;
+}
+
+/* styling the edit category page for admin - category-edit*/
+
+.edit-category-page {
+    width: 60%;
+    margin: 60px auto;
+    background-color: white;
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+}
+
+.edit-category-header {
+    margin-bottom: 30px;
+}
+
+.edit-category-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #fff3e0;
+    color: #f39c12;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+}
+
+.edit-category-header h1 {
+    color: #222d32;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.edit-category-header p {
+    color: #888888;
+}
+
+.edit-category-page form {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+}
+
+.edit-category-page label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.edit-category-page input {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.edit-category-page input:focus {
+    border-color: #f39c12;
+    outline: none;
+    background-color: white;
+}
+
+.update-category-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f39c12;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.update-category-button:hover {
+    background-color: #d98200;
+}
+
+.delete-category-button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #dd4b39;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.delete-category-button:hover {
+    background-color: #c0392b;
+}

@@ -84,10 +84,6 @@
                 <p>Stock In</p>
             </div>
 
-            <div class="card red">
-                <h2><%= products.length %></h2>
-                <p>Stock Out</p>
-            </div>
 
         </div>
 <div class="recent-products">
@@ -121,7 +117,7 @@
                         </td>
 
                         <td>
-                            <%= product.category.name %>
+                            <%= product.category ? product.category.name : "No Category" %>
                         </td>
 
                         <td>

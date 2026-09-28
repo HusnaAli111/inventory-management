@@ -5,62 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
+    <script defer src='/projects/project-2/public/js/script.js'></script>
+        <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
+     <div class="topbar">
 
-    <h1>Add New Product</h1>
+        <div class="logo">
+            Inventory System
+        </div>
+
+        <div class="menu">
+            ☰
+        </div>
+
+    </div>
 
 
-    <form action="/products" method="POST">
+    <!-- Sidebar -->
 
-        <label for="name">Product Name:</label>
-        <input type="text" id="name" name="name">
+    <div class="sidebar">
 
-        <br><br>
+        <a href="/">Dashboard</a>
 
-        <label for="description">Description:</label>
-        <input id="description" name="description"></input>
+        <a href="/products">Products</a>
 
-        <br><br>
+        <a href="/stock/new">Stock Movement</a>
 
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price">
+        <% if(user && user.role === 'admin'){ %>
+        <a href="/categories">Categories</a>
+        <% } %>
 
-        <br><br>
+        <a href="/auth/sign-out">Sign Out</a>
 
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" name="quantity">
+    </div>
 
-        <br><br>
+    <div class="main">
 
-        <label for="minStock">Minimum Stock:</label>
-        <input type="number" id="minStock" name="minStock">
+        <div class="product-page">
 
-        <br><br>
+            <div class="product-header">
+                <h1>Add New Product</h1>
+                <p>Create a new product and add it to your inventory.</p>
+            </div>
 
-        <label for="category">Category:</label>
-        <select name="category" id="category">
-            <% for(let category of categories){%>
-                <option value="<%= category._id %>">
-                    <%= category.name %>
-                </option>
+            <form action="/products" method="POST" enctype="multipart/form-data">
 
-                <%} %>
-        </select>
-        <br><br>
-        <label for="image">Product Image:</label>
+                <div class="product-content">
 
-        <input type="text" name="image" id="image">
+                    <div class="image-section">
 
-        <br><br>
+                        <div class="image-icon">
+                            +
+                        </div>
 
-        <button type="submit">Add Product</button>
+                        <h2>Product Image</h2>
 
-    </form>
+                        <p>Upload an image for your product</p>
 
-    <br>
+                        <input type="file" id="image" name="image" accept="image/*">
 
+                    </div>
+
+
+                    <div class="details-section">
+
+                        <label for="name">Product Name</label>
+                        <input type="text" id="name" name="name">
+
+
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description">
+
+
+                        <div class="small-fields">
+
+                            <div>
+                                <label for="price">Price</label>
+                                <input type="number" id="price" name="price">
+                            </div>
+
+                            <div>
+                                <label for="quantity">Quantity</label>
+                                <input type="number" id="quantity" name="quantity">
+                            </div>
+
+                        </div>
+
+
+                        <label for="minStock">Minimum Stock</label>
+                        <input type="number" id="minStock" name="minStock">
+
+
+                        <label for="category">Category</label>
+
+                        <select name="category" id="category">
+
+                            <% for(let category of categories){ %>
+
+                                <option value="<%= category._id %>">
+                                    <%= category.name %>
+                                </option>
+
+                            <% } %>
+
+                        </select>
+
+
+                        <button type="submit">
+                            Add Product →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 
 </body>
 

@@ -32,7 +32,7 @@ The system provides a simple way to keep track of available stock, monitor low-s
 ![Home Page](./PICTURES/homepage.png)
 ![Dashboard Page](./PICTURES/Dashboard.png)
 ![SignIn Page](./PICTURES/signin.png)
-![Add Product Page](./PICTURES/add.png)
+![Add Product Page](./PICTURES/addp.png)
 ![Prdouct Deatil Page](./PICTURES/product.png)
 
 

@@ -1,21 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-  </head>
-  <body>
-    <%- include('../partials/navbar') %>
-    <h1>Create a new account!</h1>
-    <form action="/auth/sign-up" method="post">
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <label for="confirmPassword">Confirm Password:</label>
-      <input type="password" name="confirmPassword" id="confirmPassword" />
-      <button type="submit">Sign up</button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+  <div class="signup-page">
+
+    <div class="signup-box">
+
+      <!-- Left side -->
+      <div class="signup-left">
+
+        <h1>Inventory<br>System</h1>
+
+        <p>
+          Create your account and start managing
+          your inventory easily.
+        </p>
+
+        <div class="signup-features">
+
+          <div>
+            <span>📦</span>
+            <p>Manage Products</p>
+          </div>
+
+          <div>
+            <span>📊</span>
+            <p>Track Stock</p>
+          </div>
+
+          <div>
+            <span>🗂</span>
+            <p>Organize Categories</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Right side -->
+      <div class="signup-right">
+
+        <h1>Create Account</h1>
+
+        <p class="signup-subtitle">
+          Create a new account to get started
+        </p>
+
+        <form action="/auth/sign-up" method="post">
+
+          <label for="username">
+            Username
+          </label>
+
+          <input type="text" name="username" id="username">
+
+
+          <label for="password">
+            Password
+          </label>
+
+          <input type="password" name="password" id="password">
+
+
+          <label for="confirmPassword">
+            Confirm Password
+          </label>
+
+          <input type="password" name="confirmPassword" id="confirmPassword">
+
+
+          <button type="submit">
+            Create Account
+          </button>
+
+        </form>
+
+        <p class="signin-text">
+          Already have an account?
+          <a href="/auth/sign-in">Sign In</a>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
 </html>

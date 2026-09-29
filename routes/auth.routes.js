@@ -62,7 +62,7 @@ router.post("/sign-in", async (req, res) => {
     role: userInDatabase.role
   };
 
-  res.redirect("/");
+  res.redirect("/dashboard");
 });
 
 

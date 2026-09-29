@@ -1198,3 +1198,125 @@ td {
     text-decoration: none;
     font-weight: bold;
 }
+/* sign up page */
+
+.signup-page {
+    min-height: 100vh;
+    background-color: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-box {
+    width: 850px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px #dddddd;
+    display: flex;
+}
+
+
+
+.signup-left {
+    width: 45%;
+    background-color: #222d32;
+    color: white;
+    padding: 50px;
+}
+
+.signup-left h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: 'cooper';
+}
+
+.signup-left > p {
+    color: #dddddd;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.signup-features div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.signup-features span {
+    font-size: 25px;
+    margin-right: 15px;
+}
+
+.signup-features p {
+    color: #eeeeee;
+}
+
+
+.signup-right {
+    width: 55%;
+    padding: 50px;
+}
+
+.signup-right h1 {
+    color: #222d32;
+    font-size: 30px;
+    margin-bottom: 8px;
+    font-family: 'cooper';
+}
+
+.signup-subtitle {
+    color: #888888;
+    margin-bottom: 30px;
+}
+
+.signup-right label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #222d32;
+}
+
+.signup-right input {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #eeeeee;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.signup-right input:focus {
+    border-color: #7b61ff;
+    outline: none;
+    background-color: white;
+}
+
+.signup-right button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #7b61ff;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.signup-right button:hover {
+    background-color: #6248e8;
+}
+
+.signin-text {
+    text-align: center;
+    margin-top: 25px;
+    color: #888888;
+}
+
+.signin-text a {
+    color: #7b61ff;
+    text-decoration: none;
+    font-weight: bold;
+}

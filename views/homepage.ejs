@@ -68,19 +68,17 @@
         <div class="cards">
 
             <div class="card blue">
-                <h2>
-                    <%= products.length %>
-                </h2>
+                <h2 class="count-number" data-number="<%= products.length %>">0</h2>
                 <p>Products</p>
             </div>
 
             <div class="card green">
-                <h2><%= categories.length %></h2>
+                <h2 class="count-number" data-number="<%= categories.length %>">0</h2>
                 <p>Categories</p>
             </div>
 
             <div class="card orange">
-                <h2><%= stock %></h2>
+                <h2 class="count-number" data-number="<%=stock %>">0</h2>
                 <p>Stock In</p>
             </div>
 
@@ -139,7 +137,9 @@
     </div>
 
     </div>
-<!-- <script src="/neo-charts/neo-charts.js"></script> -->
+<script src="/js/count.js"></script>
+
+    
 </body>
 
 </html>

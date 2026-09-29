@@ -391,6 +391,10 @@ td {
     overflow: hidden;
     box-shadow: 0 4px 15px #dddddd;
 }
+/* animation */
+.product-card:hover {
+    transform: translateY(-8px);
+}
 
 .product-image {
     height: 160px;
@@ -399,6 +403,10 @@ td {
     justify-content: center;
     align-items: center;
     font-size: 60px;
+}
+/* //animation */
+.product-image img:hover {
+    transform: scale(1.1);
 }
 
 .product-info {

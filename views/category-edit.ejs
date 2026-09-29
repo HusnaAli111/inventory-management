@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
+
 <body>
-     <div class="topbar">
+    <div class="topbar">
 
         <div class="logo">
             Inventory System
@@ -31,11 +33,11 @@
 
         <a href="/stock/new">Stock Movement</a>
 
-        <% if(user && user.role === 'admin'){ %>
-        <a href="/categories">Categories</a>
-        <% } %>
+        <% if(user && user.role==='admin' ){ %>
+            <a href="/categories">Categories</a>
+            <% } %>
 
-        <a href="/auth/sign-out">Sign Out</a>
+                <a href="/auth/sign-out">Sign Out</a>
 
     </div>
 
@@ -60,12 +62,7 @@
 
                 <label for="name">Category Name</label>
 
-                <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value="<%= category.name %>"
-                >
+                <input type="text" name="name" id="name" value="<%= category.name %>">
 
                 <button type="submit" class="update-category-button">
                     Update Category →
@@ -85,8 +82,10 @@
         </div>
 
     </div>
-<script src="/js/count.js"></script>
-<script> window.chtlConfig = { chatbotId: "8716758546" } </script>
-<script async data-id="8716758546" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <script src="/js/count.js"></script>
+    <script> window.chtlConfig = { chatbotId: "8716758546" } </script>
+    <script async data-id="8716758546" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
+
 </html>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
-            <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
-     <div class="topbar">
+    <div class="topbar">
 
         <div class="logo">
             Inventory System
@@ -32,11 +33,11 @@
 
         <a href="/stock/new">Stock Movement</a>
 
-        <% if(user && user.role === 'admin'){ %>
-        <a href="/categories">Categories</a>
-        <% } %>
+        <% if(user && user.role==='admin' ){ %>
+            <a href="/categories">Categories</a>
+            <% } %>
 
-        <a href="/auth/sign-out">Sign Out</a>
+                <a href="/auth/sign-out">Sign Out</a>
 
     </div>
 
@@ -63,21 +64,12 @@
 
                         <label for="name">Product Name</label>
 
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value="<%= product.name %>"
-                        >
+                        <input type="text" id="name" name="name" value="<%= product.name %>">
 
 
                         <label for="description">Description</label>
 
-                        <input
-                            id="description"
-                            name="description"
-                            value="<%= product.description %>"
-                        >
+                        <input id="description" name="description" value="<%= product.description %>">
 
 
                         <div class="edit-small-fields">
@@ -85,28 +77,18 @@
                             <div>
                                 <label for="price">Price</label>
 
-                                <input
-                                    type="number"
-                                    id="price"
-                                    name="price"
-                                    value="<%= product.price %>"
-                                >
+                                <input type="number" id="price" name="price" value="<%= product.price %>">
                             </div>
 
 
                             <div>
                                 <label for="quantity">Quantity</label>
 
-                                <input
-                                    type="number"
-                                    id="quantity"
-                                    name="quantity"
-                                    value="<%= product.quantity %>"
-                                >
+                                <input type="number" id="quantity" name="quantity" value="<%= product.quantity %>">
                             </div>
 
                         </div>
-                        
+
 
 
                         <button type="submit">
@@ -122,8 +104,10 @@
         </div>
 
     </div>
-<script src="/js/count.js"></script>
-<script> window.chtlConfig = { chatbotId: "8716758546" } </script>
-<script async data-id="8716758546" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <script src="/js/count.js"></script>
+    <script> window.chtlConfig = { chatbotId: "8716758546" } </script>
+    <script async data-id="8716758546" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
+
 </html>

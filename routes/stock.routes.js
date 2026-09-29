@@ -1,15 +1,16 @@
 const router = require("express").Router()
 const Product = require("../models/Product")
 
+// Stock movement form
 router.get('/new', async (req, res) => {
-
+//get all products
     const products = await Product.find()
-
+//send the product to the stock form
     res.render('stock-new.ejs', {products: products})
 
 })
 
-
+//add or remove stock
 router.post('/', async (req, res) => {
     const product = await Product.findById(req.body.product)
     const quantity = Number(req.body.quantity)

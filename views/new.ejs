@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product</title>
     <script defer src='/projects/project-2/public/js/script.js'></script>
-        <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 <body>
-     <div class="topbar">
+    <div class="topbar">
 
         <div class="logo">
             Inventory System
@@ -34,11 +34,11 @@
 
         <a href="/stock/new">Stock Movement</a>
 
-        <% if(user && user.role === 'admin'){ %>
-        <a href="/categories">Categories</a>
-        <% } %>
+        <% if(user && user.role==='admin' ){ %>
+            <a href="/categories">Categories</a>
+            <% } %>
 
-        <a href="/auth/sign-out">Sign Out</a>
+                <a href="/auth/sign-out">Sign Out</a>
 
     </div>
 
@@ -109,7 +109,7 @@
                                     <%= category.name %>
                                 </option>
 
-                            <% } %>
+                                <% } %>
 
                         </select>
 
@@ -127,9 +127,10 @@
         </div>
 
     </div>
-<script src="/js/count.js"></script>
-<script> window.chtlConfig = { chatbotId: "8716758546" } </script>
-<script async data-id="8716758546" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <script src="/js/count.js"></script>
+    <script> window.chtlConfig = { chatbotId: "8716758546" } </script>
+    <script async data-id="8716758546" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
 
 </html>

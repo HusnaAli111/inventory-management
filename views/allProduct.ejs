@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products</title>
-            <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
+
 <body>
     <div class="topbar">
 
@@ -31,11 +33,11 @@
 
         <a href="/stock/new">Stock Movement</a>
 
-        <% if(user && user.role === 'admin'){ %>
-        <a href="/categories">Categories</a>
-        <% } %>
+        <% if(user && user.role==='admin' ){ %>
+            <a href="/categories">Categories</a>
+            <% } %>
 
-        <a href="/auth/sign-out">Sign Out</a>
+                <a href="/auth/sign-out">Sign Out</a>
 
     </div>
 
@@ -65,7 +67,7 @@
                     <div class="product-card">
 
                         <div class="product-image">
-                                <img src="/<%= product.picture %>" alt="<%= product.name %>">
+                            <img src="/<%= product.picture %>" alt="<%= product.name %>">
 
                         </div>
 
@@ -87,15 +89,17 @@
 
                     </div>
 
-                <% } %>
+                    <% } %>
 
             </div>
 
         </div>
 
     </div>
-<script src="/js/count.js"></script>
-<script> window.chtlConfig = { chatbotId: "8716758546" } </script>
-<script async data-id="8716758546" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
+    <script src="/js/count.js"></script>
+    <script> window.chtlConfig = { chatbotId: "8716758546" } </script>
+    <script async data-id="8716758546" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
 </body>
+
 </html>

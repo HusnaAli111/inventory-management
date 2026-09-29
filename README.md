@@ -28,10 +28,18 @@ The system provides a simple way to keep track of available stock, monitor low-s
 11. As a user, I want to remove stock so that I can record inventory leaving the system.
 12. As a user, I want to view stock movement history so that I can see changes made to product quantities.
 
+## Screenshots
+![Home Page](./PICTURES/homepage.png)
+![Dashboard Page](./PICTURES/Dashboard.png)
+![SignIn Page](./PICTURES/signin.png)
+![Add Product Page](./PICTURES/add.png)
+![Prdouct Deatil Page](./PICTURES/product.png)
+
+
 ## Database Design
 
 The application uses four main models:
-![Database Design](./PICTURES/ERD.png)
+![Database Design](./PICTURES/inventoryDigram.png)
 
 
 ## Database Design
@@ -42,7 +50,6 @@ The application uses four main models:
 |------|
 | `_id` |
 | `username` |
-| `email` |
 | `password` |
 
 ### Product
@@ -54,7 +61,6 @@ The application uses four main models:
 | `description` |
 | `price` |
 | `quantity` |
-| `minimumStock` |
 | `category` |
 
 ### Category
@@ -72,10 +78,6 @@ The application uses four main models:
 | `product` |
 | `createdBy` |
 | `type` |
-| `quantity` |
-| `reason` |
-| `createdAt` |
-| `updatedAt` |
 
 ### Relationships
 One user can create many stock movements.
@@ -111,26 +113,59 @@ One category can contain many products.
 
 | Method | Route | Description |
 |--------|-------|-------------|
-| POST | `/products/:id/stock/in` | Add stock |
-| POST | `/products/:id/stock/out` | Remove stock |
+| POST | `/stock/new` | Stock movement form |
+| POST | `/stock` | Create a stock movement |
 | GET | `/stock` | View stock movement history |
 
 ### Category Routes
 
 | Method | Route | Description |
 |--------|-------|-------------|
+| GET | `/categories` | View all categories |
+| GET | `/categories/new` | New category form |
 | POST | `/categories` | Create a category |
+| GET | `/categories/:id/edit` | Edit category form |
+| PUT | `/categories/:id` | Update a category |
 | DELETE | `/categories/:id` | Delete a category |
+
+### Dashboard Route
+| Method | Route | Description |
+|--------|-------|-------------|
+| GET | `/dashboard` | View the inventory dashboard |
 
 ## Features
 1. User registration and authentication
-2. Dashboard with inventory statistics
-3. Full CRUD functionality for products
-4. Product categories
-5. Product quantity management
-6. Add stock
-7. Remove stock
-8. Stock movement history
-9. Low-stock identification
-10. Out-of-stock identification
-11. Product details
+2. Landing page
+3. Inventory dashboard
+4. Dashboard statistics with animated counters
+5. Full CRUD functionality for products
+6. Product details
+7. Product images
+8. Product categories
+9. Admin-only category management
+10. Add stock
+11. Remove stock
+12. Stock movement history
+13. Sign in and sign out
+14. Responsive and styled user interface
+15. Product card hover effects
+16. Product image zoom effect
+
+### AI chatbot for answering general questions about the website
+🤖 AI Chatbot
+
+The website includes an AI chatbot that helps users with general questions about the Inventory Management System.
+
+The chatbot can provide information about:
+
+- How to use the website
+- Products
+- Categories
+- Stock movements
+- Dashboard
+- User accounts
+- Administrator features
+
+The AI chatbot was created and embedded using Chatling.
+
+Chatling: https://chatling.ai/

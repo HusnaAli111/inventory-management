@@ -4,7 +4,13 @@ const Product = require("../models/Product.js")
 const StockMovement = require("../models/stockMovement.js")
 const Category=require('../models/Category.js')
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
+
+    res.render('landing.ejs')
+
+})
+
+router.get('/dashboard', async (req, res) => {
 
     const products = await Product.find().populate("category")
     const categories = await Category.find()

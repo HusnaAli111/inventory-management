@@ -10,7 +10,7 @@ router.get("/new", isAdmin, (req, res) => {
 
 router.post("/", isAdmin, async (req, res) => {
     await Category.create({name: req.body.name})
-    res.redirect("/products/new")
+    res.redirect("/categories")
 
 })
 //this is for where the admin can see the categories that exist

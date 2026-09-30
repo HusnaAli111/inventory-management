@@ -169,3 +169,18 @@ The chatbot can provide information about:
 The AI chatbot was created and embedded using Chatling.
 
 Chatling: https://chatling.ai/
+
+## ⭐ Additional Features
+
+The project includes the following additional features recommended for the project:
+
+1. Role Management
+The system supports different user roles, including administrators and regular users, with different permissions and access levels.
+2. Admin Dashboard
+Administrators have access to administrative features and can manage categories and other system functions.
+3. Animations
+Animated dashboard counters are used to make the inventory statistics more interactive and engaging.
+4. Photo Upload
+Users can upload product images to make products easier to identify and manage.
+5. AI Chatbot
+An AI chatbot is integrated into the website to help users with general questions about the Inventory Management System, including products, categories, stock movements, dashboard features, and user accounts.
